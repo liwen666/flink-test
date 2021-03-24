@@ -59,11 +59,14 @@ public class SQLExampleCdcSinkGPNew {
                 "  primary key (id) NOT ENFORCED\n" +
                 ") with (\n" +
                 " 'connector' = 'greenplum',\n" +
-                " 'url' = 'jdbc:postgresql://192.168.60.200:5432/postgres?reWriteBatchedInserts=true',\n" +
-                " 'username' = 'gpadmin',\n" +
-                " 'password' = 'gpadmin',\n" +
+//                " 'url' = 'jdbc:postgresql://192.168.60.200:5432/postgres?reWriteBatchedInserts=true',\n" +
+                " 'url' = 'jdbc:postgresql://10.0.22.87:5432/postgres?reWriteBatchedInserts=true',\n" +
                 " 'table-name' = 'sink_table',\n" +
-                " 'format' = 'debezium-json')\n" ;
+                "    'schema-name' = 'public',\n" +
+                "    'sink.buffer-flush.max-rows' = '5',\n" +
+                "    'sink.buffer-flush.interval' = '2000',\n" +
+                "    'username' = 'gpadmin',\n" +
+                "    'password' = 'gpadmin')\n" ;
 
         String ddlSource = "create table source_table (\n" +
                 "  id INT,\n" +

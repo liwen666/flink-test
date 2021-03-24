@@ -19,21 +19,6 @@ public class SQLExampleData2PG {
                 .build();
         StreamTableEnvironment blinkStreamTableEnv = StreamTableEnvironment.create(blinkStreamEnv, blinkStreamSettings);
 
-//        String ddlSource = "CREATE TABLE user_behavior (\n" +
-//                "    score numeric(38, 18)\n" +
-//                ") WITH (\n" +
-//                "    'connector.type' = 'kafka',\n" +
-//                "    'connector.version' = '0.11',\n" +
-////                "    'connector.version' = 'universal',\n" +
-//                "    'update-mode'=  'append',\n" +
-//                "    'connector.property-version'=  '1',\n" +
-//
-//                "    'connector.topic' = 'user_behavior',\n" +
-//                "    'connector.startup-mode' = 'latest-offset',\n" +
-//                "    'connector.properties.zookeeper.connect' = '11.11.1.79:2181',\n" +
-//                "    'connector.properties.bootstrap.servers' = '11.11.1.79:9092',\n" +
-//                "    'format.type' = 'json'\n" +
-//                ")";
 
         String ddlSource = "CREATE TABLE user_behavior (\n" +
                 "    score BIGINT" +

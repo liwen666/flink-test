@@ -6,6 +6,7 @@ import org.apache.flink.table.api.EnvironmentSettings;
 import org.apache.flink.table.api.TableResult;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
+
 /**
  * <p>
  *  描述
@@ -71,8 +72,8 @@ public class SQLExampleCdcSinkGP {
                 "  primary key (id) NOT ENFORCED\n" +
                 ") with (\n" +
                 " 'connector' = 'jdbc',\n" +
-//                " 'url' = 'jdbc:postgresql://10.0.22.87:5432/postgres?reWriteBatchedInserts=true',\n" +
-                " 'url' = 'jdbc:postgresql://192.168.60.200:5432/postgres?reWriteBatchedInserts=true',\n" +
+                " 'url' = 'jdbc:postgresql://10.0.22.87:5432/postgres?reWriteBatchedInserts=true',\n" +
+//                " 'url' = 'jdbc:postgresql://192.168.60.200:5432/postgres?reWriteBatchedInserts=true',\n" +
                 " 'username' = 'gpadmin',\n" +
                 " 'password' = 'gpadmin',\n" +
                 " 'table-name' = 'sink_table',\n" +

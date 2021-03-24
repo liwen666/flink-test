@@ -59,4 +59,11 @@ onf.setString("pipeline.name", Common.jobName)
 
 
 #CDC
-接受debezium消息时不能使用debezium开头的topic
+
+DebeziumChangeConsumer 114行对binlog解析
+
+RowDataDebeziumDeserializeSchema 98 行
+
+RowDataDebeziumDeserializeSchema  358行函数处理字段数据
+
+
