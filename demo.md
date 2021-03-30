@@ -1,5 +1,6 @@
 
 #单机
+/home/liwen/flink12/bin/flink run -m 11.11.1.79:8081  -c jrx.data.hub.flink.example.scoket.SocketWindowWordCount  /home/liwen/flink12/examples/SocketWindowWordCount.jar 
 
 
 /home/liwen/flink12/bin/flink run -m 11.11.1.79:8081  -c org.apache.flink.examples.java.wordcount.WordCount  /home/liwen/flink12/examples/batch/WordCount.jar 

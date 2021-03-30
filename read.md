@@ -66,4 +66,92 @@ RowDataDebeziumDeserializeSchema 98 行
 
 RowDataDebeziumDeserializeSchema  358行函数处理字段数据
 
+#消费kafka的配置
 
+ " 'connector' = 'kafka',\n" +
+                " 'properties.bootstrap.servers' = '11.11.1.79:9092',\n" +
+                " 'topic' = 'debezium_test',\n" +
+                " 'format' = 'debezium-json',\n" +
+                // 最早分区消费
+//                " 'scan.startup.mode' = 'earliest-offset',\n" +
+                // 最近分区消费
+//                " 'scan.startup.mode' = 'latest-offset',\n" +
+                // 指定偏移量消费
+//                 " 'scan.startup.mode' = 'specific-offsets',\n" +
+//                 " 'scan.startup.specific-offsets' = 'partition:0,offset:71',\n" +
+                // 指定时间戳
+                " 'scan.startup.mode' = 'timestamp',\n" +
+                 " 'scan.startup.timestamp-millis' = '1616490682000',\n" +
+
+//                " 'sink.buffer-flush.max-rows' = '1',\n" +
+                " 'properties.group.id' = 'CDC_TEST')\n";
+                
+                
+ flink的其他命令
+ 1.flink list
+ 
+ flink list：列出flink的job列表。
+ 
+ flink list -r/--runing :列出正在运行的job
+ 
+ flink list -s/--scheduled :列出已调度完成的job
+ 
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 2.flink cancel
+ 
+ flink cancel [options] <job_id> : 取消正在运行的job id
+ 
+ flink cancel -s/--withSavepoint <path> <job_id> ： 取消正在运行的job，并保存到相应的保存点
+ 
+ 1
+ 2
+ 3
+ 4
+ 3.flink stop：仅仅针对Streaming job
+ 
+ flink stop [options] <job_id>
+ 
+ flink stop <job_id>：停止对应的job
+ 
+ 1
+ 2
+ 3
+ 4
+ 4.flink modify
+ 
+ flink modify <job_id> [options] 
+ 
+ flink modify <job_id> -p/--parallelism p : 修改job的并行度
+ 1
+ 2
+ 3
+ 5.flink savepoint（重要）
+ 
+ flink savepoint [options] <job_id> <target directory>
+ 
+ eg:
+ 
+ # 触发保存点
+ flink savepoint <job_id> <hdfs://xxxx/xx/x> : 将flink的快照保存到hdfs目录
+ 
+ # 使用yarn触发保存点
+ flink savepoint <job_id> <target_directory> -yid <application_id>
+ 
+ # 使用savepoint取消作业
+ flink cancel -s <tar_directory> <job_id>
+ 
+ 
+ 
+ # 从保存点恢复
+ flink run -s <target_directoey> [:runArgs]
+ 
+ # 如果复原的程序，对逻辑做了修改，比如删除了算子可以指定allowNonRestoredState参数复原。
+ flink run -s <target_directory> -n/--allowNonRestoredState [:runArgs]
+ ————————————————
+ 版权声明：本文为CSDN博主「张行之」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+ 原文链接：https://blog.csdn.net/qq_33689414/article/details/90671685

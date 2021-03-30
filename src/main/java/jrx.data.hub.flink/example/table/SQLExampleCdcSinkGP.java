@@ -51,19 +51,6 @@ public class SQLExampleCdcSinkGP {
                 .build();
         StreamTableEnvironment blinkStreamTableEnv = StreamTableEnvironment.create(blinkStreamEnv, blinkStreamSettings);
 
-//        String sink = "CREATE TABLE sink_table (\n" +
-//                "  id INT,\n" +
-//                "  k INT,\n" +
-//                "  c STRING,\n" +
-//                "  pad STRING,\n" +
-//                "  `remark` STRING\n" +
-//                ") WITH (\n" +
-//                "   'connector.type' = 'jdbc',\n" +
-//                "   'connector.url' = 'jdbc:mysql://11.11.1.79:3306/anytask_dev11',\n" +
-//                "   'connector.table' = 'cas_info',\n" +
-//                "   'connector.username' = 'any',\n" +
-//                "   'connector.password' = 'anywd1234'\n" +
-//                ")";
         String sink = "create table sink_table (\n" +
                 "  id INT,\n" +
                 "  k INT,\n" +
@@ -92,7 +79,7 @@ public class SQLExampleCdcSinkGP {
                 ") with (\n" +
                 " 'connector' = 'kafka',\n" +
                 " 'properties.bootstrap.servers' = '11.11.1.79:9092',\n" +
-                " 'topic' = 'debezium_test',\n" +
+                " 'topic' = 'flink_web.cdc_test',\n" +
                 " 'format' = 'debezium-json',\n" +
                 // 最早分区消费
 //                " 'scan.startup.mode' = 'earliest-offset',\n" +
