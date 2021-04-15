@@ -12,9 +12,16 @@ import java.util.Map;
  * 根据数据分topic发送
  */
 public class MyKafkaSerializationSchema implements KafkaSerializationSchema<String> {
+    int ini = 0;
     @Override
     public ProducerRecord<byte[], byte[]> serialize(String s, @Nullable Long aLong) {
         Map jsonObject = JsonUtils.string2Obj(s,Map.class);
+        if(jsonObject.get("routeKey").equals("30")){
+            ini++;
+            if(ini%3==0){
+                throw new RuntimeException("测试checkpoint");
+            }
+        }
         String topic = (String) jsonObject.get("topic");
         String key = (String) jsonObject.get("routeKey");
         jsonObject.put("topic",null);

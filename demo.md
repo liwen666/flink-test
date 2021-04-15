@@ -72,3 +72,10 @@ java -Xbootclasspath/a: -jar /home/liwen/flink12/examples/MysqlComplemented.jar
  
  
  /home/liwen/flink12/bin/flink run  -m 10.0.8.13:8081  -p 1   -c jrx.data.hub.flink.example.table.MysqlComplemented  /home/liwen/flink12/examples/MysqlComplemented.jar   --script /home/liwen/flink12/examples
+
+
+#flink12.2
+/home/liwen/flink12.2/flink-1.12.2/bin
+
+
+ /home/liwen/flink12.2/flink-1.12.2/bin/flink run  -m  11.11.1.79:8081  -p 1   -c com.riveretech.est.cdc.JobCdcApp  /home/liwen/flink12.2/jobhome/job-cdc-1.0.0-SNAPSHOT.jar   

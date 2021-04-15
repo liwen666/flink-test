@@ -74,8 +74,8 @@ public class TestJOB implements Serializable {
         System.setProperty("project.basedir", "D:\\workspace\\strategy-topology\\job-cdc");
 //        String[] parameters = {"run","-h", "-m", "11.11.1.79:8081","-c","jrx.data.hub.flink.example.scoket.SocketWindowWordCount", getTestJarPath(null)};
 //        String[] parameters = {"run","-m", "11.11.1.79:8081"
-//        String[] parameters = {"run","-m", "localhost:8081"
-        String[] parameters = {"run","-m", "10.0.22.87:8081"
+        String[] parameters = {"run","-m", "localhost:8081"
+//        String[] parameters = {"run","-m", "10.0.22.87:8081"
                 ,"-c","com.riveretech.est.cdc.JobCdcApp"
                 , getTestJarPath("job-cdc-1.0.0-SNAPSHOT.jar"),"--cdc_config_version","1","--dependency_external","C:\\Users\\liwen\\Desktop\\lib"};
 //        final ParameterTool params = ParameterTool.fromArgs(parameters);

@@ -58,7 +58,9 @@ public class SQLExampleCdcSinkGPNew {
 //                "  ts_ms BIGINT,\n" +
 
                 "  primary key (id) NOT ENFORCED\n" +
-                ") with (\n" +
+                ") " +
+//                "PARTITIONED  BY (id)\n" +
+                "with (\n" +
                 " 'connector' = 'greenplum',\n" +
 //                " 'url' = 'jdbc:postgresql://192.168.60.200:5432/postgres?reWriteBatchedInserts=true',\n" +
                 " 'url' = 'jdbc:postgresql://10.0.22.87:5432/postgres?reWriteBatchedInserts=true',\n" +

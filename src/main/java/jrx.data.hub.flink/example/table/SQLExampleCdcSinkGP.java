@@ -57,7 +57,9 @@ public class SQLExampleCdcSinkGP {
                 "  c STRING,\n" +
                 "  pad STRING,\n" +
                 "  primary key (id) NOT ENFORCED\n" +
-                ") with (\n" +
+                ") " +
+//                "PARTITIONED  BY (id)\n"+
+                "with (\n" +
                 " 'connector' = 'jdbc',\n" +
                 " 'url' = 'jdbc:postgresql://10.0.22.87:5432/postgres?reWriteBatchedInserts=true',\n" +
 //                " 'url' = 'jdbc:postgresql://192.168.60.200:5432/postgres?reWriteBatchedInserts=true',\n" +
