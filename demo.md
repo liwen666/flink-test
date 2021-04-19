@@ -79,3 +79,6 @@ java -Xbootclasspath/a: -jar /home/liwen/flink12/examples/MysqlComplemented.jar
 
 
  /home/liwen/flink12.2/flink-1.12.2/bin/flink run  -m  11.11.1.79:8081  -p 1   -c com.riveretech.est.cdc.JobCdcApp  /home/liwen/flink12.2/jobhome/job-cdc-1.0.0-SNAPSHOT.jar   
+
+
+/home/liwen/flink12.2/flink-1.12.2/bin/flink run   -c com.riveretech.est.runtime.JobApp  /home/liwen/flink12.2/jobhome/example/job-runtime-1.0.0-SNAPSHOT.jar  --dependency_external /data/Anyestnfs/jarlib
