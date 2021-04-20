@@ -38,7 +38,7 @@
 
     <dependencies>
 
-<!--////////////////////////////log////////////////////////////////////////////-->
+        <!--////////////////////////////log////////////////////////////////////////////-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -59,8 +59,7 @@
             <artifactId>log4j-slf4j-impl</artifactId>
             <version>2.6.2</version>
         </dependency>
-<!--//////////////////////////////////////////////////////////////////////-->
-
+        <!--//////////////////////////////////////////////////////////////////////-->
 
 
         <!-- Flink dependencies -->
@@ -111,9 +110,9 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>org.apache.flink</groupId>-->
-            <!--<artifactId>flink-table-api-java-bridge_${scala.binary.version}</artifactId>-->
-            <!--<version>${flink.version}</version>-->
+        <!--<groupId>org.apache.flink</groupId>-->
+        <!--<artifactId>flink-table-api-java-bridge_${scala.binary.version}</artifactId>-->
+        <!--<version>${flink.version}</version>-->
         <!--</dependency>-->
         <dependency>
             <groupId>org.apache.flink</groupId>
@@ -289,6 +288,8 @@
             <artifactId>lombok</artifactId>
             <version>${lombok}</version>
         </dependency>
+
+
     </dependencies>
 
     <build>
@@ -379,7 +380,8 @@
 
                             <archive>
                                 <manifestEntries>
-                                    <program-class>jrx.data.hub.flink.example.table.SQLExampleData2PGFunction</program-class>
+                                    <program-class>jrx.data.hub.flink.example.table.SQLExampleData2PGFunction
+                                    </program-class>
                                 </manifestEntries>
                             </archive>
 
@@ -482,62 +484,60 @@
                 </executions>
             </plugin>
 
-                    <!-- 使用 maven-shade-plugin插件打可执行包-->
-                    <!--
-                                <plugin>
-                                    <groupId>org.apache.maven.plugins</groupId>
-                                    <artifactId>maven-shade-plugin</artifactId>
-                                    <version>2.4.3</version>
-                                    <executions>
-                                        <execution>
-                                            <phase>package</phase>
-                                            <goals>
-                                                <goal>shade</goal>
-                                            </goals>
-                                            <configuration>
-                                                <transformers>
-                                                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                                        <mainClass>com.lwf.test.TestClass</mainClass>
-                                                    </transformer>
-                                                </transformers>
-                                            </configuration>
-                                        </execution>
-                                    </executions>
-                                </plugin>
-                    -->
+            <!-- 使用 maven-shade-plugin插件打可执行包-->
+            <!--
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-shade-plugin</artifactId>
+                            <version>2.4.3</version>
+                            <executions>
+                                <execution>
+                                    <phase>package</phase>
+                                    <goals>
+                                        <goal>shade</goal>
+                                    </goals>
+                                    <configuration>
+                                        <transformers>
+                                            <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                                <mainClass>com.lwf.test.TestClass</mainClass>
+                                            </transformer>
+                                        </transformers>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+            -->
 
-                    <!-- 使用 maven-Assembly-plugin插件打可执行包-->
-                    <!--<plugin>-->
-                        <!--<groupId>org.apache.maven.plugins</groupId>-->
-                        <!--<artifactId>maven-assembly-plugin</artifactId>-->
-                        <!--<version>2.6</version>-->
-                        <!--<configuration>-->
-                            <!--&lt;!&ndash; get all project dependencies &ndash;&gt;-->
-                            <!--<descriptorRefs>-->
-                                <!--<descriptorRef>jar-with-dependencies</descriptorRef>-->
-                            <!--</descriptorRefs>-->
-                            <!--&lt;!&ndash; MainClass in mainfest make a executable jar &ndash;&gt;-->
-                            <!--<archive>-->
-                                <!--<manifest>-->
-                                    <!--<mainClass>com.lwf.test.TestClass</mainClass>-->
-                                <!--</manifest>-->
-                            <!--</archive>-->
-                        <!--</configuration>-->
-                        <!--<executions>-->
-                            <!--<execution>-->
-                                <!--<id>make-assembly</id>-->
-                                <!--<phase>package</phase>-->
-                                <!--<goals>-->
-                                    <!--<goal>single</goal>-->
-                                <!--</goals>-->
-                            <!--</execution>-->
-                        <!--</executions>-->
-                    <!--</plugin>-->
-
+            <!-- 使用 maven-Assembly-plugin插件打可执行包-->
+            <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-assembly-plugin</artifactId>-->
+            <!--<version>2.6</version>-->
+            <!--<configuration>-->
+            <!--&lt;!&ndash; get all project dependencies &ndash;&gt;-->
+            <!--<descriptorRefs>-->
+            <!--<descriptorRef>jar-with-dependencies</descriptorRef>-->
+            <!--</descriptorRefs>-->
+            <!--&lt;!&ndash; MainClass in mainfest make a executable jar &ndash;&gt;-->
+            <!--<archive>-->
+            <!--<manifest>-->
+            <!--<mainClass>com.lwf.test.TestClass</mainClass>-->
+            <!--</manifest>-->
+            <!--</archive>-->
+            <!--</configuration>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>make-assembly</id>-->
+            <!--<phase>package</phase>-->
+            <!--<goals>-->
+            <!--<goal>single</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--</plugin>-->
 
 
         </plugins>
-
 
 
     </build>
