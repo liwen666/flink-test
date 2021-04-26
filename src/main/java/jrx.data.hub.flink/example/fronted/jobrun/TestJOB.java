@@ -54,8 +54,8 @@ public class TestJOB implements Serializable {
         System.setProperty("project.basedir", "D:\\flink12\\flink-1.12.1-src\\flink-engine");
 //        String[] parameters = {"run","-h", "-m", "11.11.1.79:8081","-c","jrx.data.hub.flink.example.scoket.SocketWindowWordCount", getTestJarPath(null)};
 //        String[] parameters = {"run","-m", "11.11.1.79:8081","-c","jrx.data.hub.flink.example.scoket.SocketWindowWordCount", getTestJarPath(null)};
-//        String[] parameters = {"run","-m", "10.0.22.87:8081","-c","jrx.data.hub.flink.example.scoket.SocketWindowWordCount", getTestJarPath(null)};
-        String[] parameters = {"run","-m", "localhost:8081","-c","jrx.data.hub.flink.example.scoket.SocketWindowWordCount", getTestJarPath(null)};
+        String[] parameters = {"run","-m", "10.0.22.87:8081","-c","com.riveretech.est.runtime.JobApp", "C:\\Users\\liwen\\Desktop\\JOB\\job-runtime-1.0.0-SNAPSHOT.jar","--dependency_external","C:\\Users\\liwen\\Desktop\\lib"};
+//        String[] parameters = {"run","-m", "localhost:8081","-c","jrx.data.hub.flink.example.scoket.SocketWindowWordCount", getTestJarPath(null)};
 //        final ParameterTool params = ParameterTool.fromArgs(parameters);
 
 //        Configuration configuration = GlobalConfiguration.loadConfiguration(CliFrontendTestUtils.getConfigDir());

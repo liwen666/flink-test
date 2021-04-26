@@ -1,4 +1,28 @@
 
+
+#1问题记录
+flink实现函数的动态编译必须把编译的class文件放到classpath下
+
+拷贝内容到jar
+
+cd /home/liwen/flink12.2/jobhome/job_binlog/8b49b1c7d3974480ae12d9f383ade9b5 && jar -uvf /home/liwen/flink12.2/jobhome/job_binlog/8b49b1c7d3974480ae12d9f383ade9b5/job-runtime-1.0.0-SNAPSHOT.jar ./*.json ./*.sql
+cd /home/liwen/flink12.2/jobhome/job_binlog/8b49b1c7d3974480ae12d9f383ade9b5 && jar -uvf /home/liwen/flink12.2/jobhome/job_binlog/8b49b1c7d3974480ae12d9f383ade9b5/job-runtime-1.0.0-SNAPSHOT.jar ./*
+#2kafka 数据类型不一致导致的函数不能正常使用
+cd /home/liwen/flink12.2/jobhome/job_binlog/8b49b1c7d3974480ae12d9f383ade9b5 && jar -uvf /home/liwen/flink12.2/jobhome/job_binlog/8b49b1c7d3974480ae12d9f383ade9b5/job-runtime-1.0.0-SNAPSHOT.jar ./*.class
+#3 flinkTable消费kafka时可以设置多个topic，用;分割，中间不能有空格,如下：
+
+                                         CREATE TABLE kafka_binlog_dml(
+                                                    binlog string
+                                                )
+                                        WITH(
+                                        'connector'='kafka',
+                                        'topic'='tayh811.am_account_main_info;tayh811.tl_payment_allocation_log',
+                                        'properties.bootstrap.servers'='172.16.102.23:9092',
+                                        'properties.group.id'='ODS_T_Group',
+                                        'value.format'='raw',
+                                        'scan.startup.mode'='earliest-offset')
+
+
 #172 yarn
 http://172.16.101.12:8088/cluster
 http://172.16.101.12:50070/dfshealth.html#tab-overview
@@ -152,6 +176,3 @@ RowDataDebeziumDeserializeSchema  358行函数处理字段数据
  
  # 如果复原的程序，对逻辑做了修改，比如删除了算子可以指定allowNonRestoredState参数复原。
  flink run -s <target_directory> -n/--allowNonRestoredState [:runArgs]
- ————————————————
- 版权声明：本文为CSDN博主「张行之」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
- 原文链接：https://blog.csdn.net/qq_33689414/article/details/90671685

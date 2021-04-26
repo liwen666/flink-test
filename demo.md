@@ -82,3 +82,10 @@ java -Xbootclasspath/a: -jar /home/liwen/flink12/examples/MysqlComplemented.jar
 
 
 /home/liwen/flink12.2/flink-1.12.2/bin/flink run   -c com.riveretech.est.runtime.JobApp  /home/liwen/flink12.2/jobhome/example/job-runtime-1.0.0-SNAPSHOT.jar  --dependency_external /data/Anyestnfs/jarlib
+
+
+
+ /home/liwen/flink12.2/flink-1.12.2/bin/flink run -m 11.11.1.79:8081 -C "file:///data/Anyestnfs/jarlib/common-1.0.0-SNAPSHOT.jar" -c com.riveretech.est.runtime.JobApp /home/liwen/flink12.2/jobhome/save_binlog_job/841164a970b24dc584c3cec67a014a31/job-runtime-1.0.0-SNAPSHOT.jar --dependency_external /data/Anyestnfs/jarlib
+  /home/liwen/flink12.2/flink-1.12.2/bin/flink run -m 11.11.1.79:8081  -C file:///data/Anyestnfs/jarlib/ -c com.riveretech.est.runtime.JobApp /home/liwen/flink12.2/jobhome/save_binlog_job/841164a970b24dc584c3cec67a014a31/job-runtime-1.0.0-SNAPSHOT.jar --dependency_external /data/Anyestnfs/jarlib
+  
+  /home/liwen/flink12.2/flink-1.12.2/bin/standalone-job.sh start  -C file:///data/Anyestnfs/jarlib/ --job-classname com.riveretech.est.runtime.JobApp /home/liwen/flink12.2/jobhome/save_binlog_job/841164a970b24dc584c3cec67a014a31/job-runtime-1.0.0-SNAPSHOT.jar

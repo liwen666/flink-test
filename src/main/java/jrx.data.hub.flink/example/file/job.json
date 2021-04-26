@@ -1,0 +1,29 @@
+{
+  "local": false,
+  "version": "v1.0.0",
+  "jobName": "tayh811_save_dml_message_to_file",
+  "streamingMode": true,
+  "parallelism": 1,
+  "idleStateRetention": 24,
+  "checkpointConfig": {
+    "checkpointingMode": "EXACTLY_ONCE",
+    "checkpointInterval": 60,
+    "maxConcurrentCheckpoints": 1,
+    "externalizedCheckpointCleanup": "RETAIN_ON_CANCELLATION",
+    "checkpointTimeout": 600,
+    "tolerableCheckpointFailureNumber": 10
+  },
+  "restartStrategy": {},
+  "stateBackend": {
+    "backend": "rocksdb",
+    "enableIncremental": false,
+    "checkpointDir": "file:///data/Anyestnfs/flink/flink-checkpoints"
+  },
+  "checkpointDir": "file:///data/Anyestnfs/flink/flink-checkpoints",
+  "insertSql": [
+    " INSERT INTO file_binlog_dml\n        SELECT\n            binlog,\n            get_source_meta(binlog,'table') AS tb,\n            FROM_UNIXTIME(CAST(SUBSTR(get_source_meta(binlog,'ts_ms'),1,10) AS BIGINT),'yyyy-MM-dd') AS biz_date\n        FROM kafka_binlog_dml\n        WHERE binlog is not null"
+  ],
+  "functionsNamed": {
+    "GetSourceMeta": "get_source_meta"
+  }
+}
