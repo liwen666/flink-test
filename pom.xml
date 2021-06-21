@@ -288,33 +288,44 @@
             <artifactId>lombok</artifactId>
             <version>${lombok}</version>
         </dependency>
+        <dependency>
+            <groupId>org.java-websocket</groupId>
+            <artifactId>Java-WebSocket</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-yarn_2.11</artifactId>
+            <version>1.12.2</version>
+            <scope>test</scope>
+        </dependency>
 
 
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>scala-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>scala-compile-first</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>scala-test-compile</id>
-                        <phase>process-test-resources</phase>
-                        <goals>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>net.alchim31.maven</groupId>-->
+                <!--<artifactId>scala-maven-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>scala-compile-first</id>-->
+                        <!--<phase>process-resources</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>add-source</goal>-->
+                            <!--<goal>compile</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                    <!--<execution>-->
+                        <!--<id>scala-test-compile</id>-->
+                        <!--<phase>process-test-resources</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>testCompile</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -441,6 +452,56 @@
                             </includes>
                         </configuration>
                     </execution>
+
+
+                    <execution>
+                        <id>AppRunnerAgency</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+
+                        <configuration>
+                            <classifier>AppRunnerAgency</classifier>
+
+                            <archive>
+                                <manifestEntries>
+                                    <program-class>jrx.data.hub.flink.example.fronted.apprun.AppRunnerAgency</program-class>
+                                </manifestEntries>
+                            </archive>
+
+                            <includes>
+                                <include>jrx/data/hub/flink/example/fronted/apprun/AppRunnerAgency*</include>
+                                <include>META-INF/LICENSE</include>
+                                <include>META-INF/NOTICE</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+
+
+                    <execution>
+                        <id>SQLExampleCdcSinkGPQuery</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+
+                        <configuration>
+                            <classifier>SQLExampleCdcSinkGPQuery</classifier>
+
+                            <archive>
+                                <manifestEntries>
+                                    <program-class>jrx.data.hub.flink.datahub.SQLExampleCdcSinkGPQuery</program-class>
+                                </manifestEntries>
+                            </archive>
+
+                            <includes>
+                                <include>jrx/data/hub/flink/datahub/SQLExampleCdcSinkGPQuery*</include>
+                                <include>META-INF/LICENSE</include>
+                                <include>META-INF/NOTICE</include>
+                            </includes>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
 
@@ -478,6 +539,11 @@
                                       tofile="${project.basedir}/target/SQLExampleData2PGFunction.jar"/>
                                 <copy file="${project.basedir}/target/flink-engine-1.2.0-SocketWindowWordCount.jar"
                                       tofile="${project.basedir}/target/SocketWindowWordCount.jar"/>
+                                <copy file="${project.basedir}/target/flink-engine-1.2.0-SQLExampleCdcSinkGPQuery.jar"
+                                      tofile="${project.basedir}/target/SQLExampleCdcSinkGPQuery.jar"/>
+                                <copy file="${project.basedir}/target/flink-engine-1.2.0-AppRunnerAgency.jar"
+                                      tofile="${project.basedir}/target/AppRunnerAgency.jar"/>
+
                             </target>
                         </configuration>
                     </execution>

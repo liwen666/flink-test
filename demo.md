@@ -13,6 +13,9 @@
 
 /home/liwen/flink12/flink12/bin/flink run -m 10.0.8.13:8081  -c org.apache.flink.examples.java.wordcount.WordCount  /home/liwen/flink12/flink12/examples/batch/WordCount.jar 
 
+ ./bin/flink run   -c org.apache.flink.examples.java.wordcount.WordCount  ./examples/batch/WordCount.jar 
+
+
 #本地测试函数
  /home/liwen/flink12/bin/flink run    -p 1   -c jrx.data.hub.flink.example.table.SQLExampleData2PGFunction  /home/liwen/flink12/examples/SQLExampleData2PGFunction.jar
 
@@ -89,3 +92,29 @@ java -Xbootclasspath/a: -jar /home/liwen/flink12/examples/MysqlComplemented.jar
   /home/liwen/flink12.2/flink-1.12.2/bin/flink run -m 11.11.1.79:8081  -C file:///data/Anyestnfs/jarlib/ -c com.riveretech.est.runtime.JobApp /home/liwen/flink12.2/jobhome/save_binlog_job/841164a970b24dc584c3cec67a014a31/job-runtime-1.0.0-SNAPSHOT.jar --dependency_external /data/Anyestnfs/jarlib
   
   /home/liwen/flink12.2/flink-1.12.2/bin/standalone-job.sh start  -C file:///data/Anyestnfs/jarlib/ --job-classname com.riveretech.est.runtime.JobApp /home/liwen/flink12.2/jobhome/save_binlog_job/841164a970b24dc584c3cec67a014a31/job-runtime-1.0.0-SNAPSHOT.jar
+  
+  
+  
+  #10.0.22.87
+  
+/data/apps/flink_standalone/bin/flink run -m   10.0.22.87:8081  -c  com.riveretech.est.runtime.JobApp    /data/anyest/jobhome/job-runtime-1.0.0-SNAPSHOT.jar --dependency_external /data/anyest/jarlib 
+/opt/flink-1.12.2/bin/flink run -m   10.0.22.87:8081  -c  com.riveretech.est.runtime.JobApp    /data/anyest/jobhome/job-runtime-1.0.0-SNAPSHOT.jar --dependency_external /data/anyest/jarlib 
+
+  /data/apps/flink_standalone/bin/flink cancel  -m 10.0.22.87:8081 b9cd72a37bcfafaffac8a17d8c86fb57
+
+#11.11.1.79
+/home/liwen/flink12.2/jobhome
+/home/liwen/flink12.2/flink-1.12.2
+
+/home/liwen/flink12.2/flink-1.12.2/bin/flink run -m   10.0.22.87:8081  -c  com.riveretech.est.runtime.JobApp    /home/liwen/flink12.2/jobhome/job-runtime-1.0.0-SNAPSHOT.jar --dependency_external /data/anyest/jarlib 
+
+
+/home/liwen/flink12.2/flink-1.12.2/bin/flink run -m 11.11.1.79:8081  -c org.apache.flink.examples.java.wordcount.WordCount  /home/liwen/flink12.2/flink-1.12.2/examples/batch/WordCount.jar 
+
+
+/home/liwen/flink12.2/flink-1.12.2/bin/flink run  -m   10.0.22.87:8081 -c  com.riveretech.est.runtime.JobApp    -C /data/anyest/jarlib/anycfs-common-1.0-SNAPSHOT.jar  /home/liwen/flink12.2/jobhome/job-runtime-1.0.0-SNAPSHOT.jar --dependency_external /data/anyest/jarlib 
+
+
+
+
+./bin/flink run -t yarn-session -Dyarn.application.id=application_XXXX_YY ./examples/streaming/TopSpeedWindowing.jar
