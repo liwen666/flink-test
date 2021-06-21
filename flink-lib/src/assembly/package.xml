@@ -1,0 +1,84 @@
+<assembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+    <id>package-tar</id>
+    <formats>
+        <!-- 输出格式 -->
+        <format>tar.gz</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <fileSets>
+        <!-- 定义代码目录与输出目录映射 -->
+        <fileSet>
+            <directory>target/classes</directory>
+            <outputDirectory>/classes</outputDirectory>
+            <excludes>
+                <exclude>/job/**</exclude>
+            </excludes>
+        </fileSet>
+
+        <fileSet>
+            <fileMode>755</fileMode>
+            <lineEnding>unix</lineEnding>
+            <directory>flink12/bin</directory>
+            <outputDirectory>/flink12/bin</outputDirectory>
+            <excludes>
+                <exclude>bash-java-utils.jar</exclude>
+            </excludes>
+        </fileSet>
+
+        <fileSet>
+            <directory>flink12</directory>
+            <outputDirectory>/flink12</outputDirectory>
+        </fileSet>
+
+        <!--<fileSet>-->
+        <!--<directory>target/classes</directory>-->
+        <!--<outputDirectory>classes</outputDirectory>-->
+        <!--<includes>-->
+        <!--<include>**.md</include>-->
+        <!--<include>**.xml</include>-->
+        <!--<include>**.yml</include>-->
+        <!--<include>**.yaml</include>-->
+        <!--<include>**.yaml</include>-->
+        <!--<include>**.txt</include>-->
+        <!--<include>**.properties</include>-->
+        <!--<include>/static/**</include>-->
+        <!--<include>/function/**</include>-->
+        <!--</includes>-->
+        <!--</fileSet>-->
+        <fileSet>
+            <directory>logs</directory>
+            <outputDirectory>/logs</outputDirectory>
+            <excludes>
+                <exclude>/*.log</exclude>
+                <exclude>/backup/*.log</exclude>
+            </excludes>
+            <useDefaultExcludes>true</useDefaultExcludes>
+        </fileSet>
+        <fileSet>
+            <fileMode>755</fileMode>
+            <!-- 打包前将该目录下的文件换行符替换成LF -->
+            <lineEnding>unix</lineEnding>
+            <directory>sbin</directory>
+            <outputDirectory>/sbin</outputDirectory>
+            <useDefaultExcludes>true</useDefaultExcludes>
+            <!--<excludes>-->
+            <!--<exclude>shutdown.sh</exclude>-->
+            <!--<exclude>startup.sh</exclude>-->
+            <!--<exclude>assembly.sh</exclude>-->
+            <!--</excludes>-->
+        </fileSet>
+    </fileSets>
+    <!-- 依赖包打入lib下s -->
+    <!--<dependencySets>-->
+        <!--<dependencySet>-->
+            <!--<useProjectArtifact>true</useProjectArtifact>-->
+            <!--<outputDirectory>lib</outputDirectory>-->
+            <!--&lt;!&ndash; 将scope为runtime的依赖包打包到lib目录下。 &ndash;&gt;-->
+            <!--<scope>runtime</scope>-->
+            <!--<excludes>-->
+                <!--<exclude>jrx.anyest:any-data-processor</exclude>-->
+            <!--</excludes>-->
+        <!--</dependencySet>-->
+    <!--</dependencySets>-->
+</assembly>
