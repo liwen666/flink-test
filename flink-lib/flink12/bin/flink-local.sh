@@ -72,6 +72,5 @@ echo -----$CLASSPATH------
 
 mkdir -vp /data/log/query
 echo ----日志路径是------$logFile
-java $JAVA_OPT  -classpath $CLASSPATH$MAIN_CLASS  $@   > $logFile & tail -f $logFile
-
+nohup java $JAVA_OPT  -classpath $CLASSPATH$MAIN_CLASS  $@   > $logFile
 
