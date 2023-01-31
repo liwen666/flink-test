@@ -1,6 +1,0 @@
-[
-  {
-    "functionName": "anycfs.common.udf.GetSourceMeta",
-    "classContent": "package anycfs.common.udf;\n\nimport com.alibaba.fastjson.JSON;\nimport org.apache.flink.table.functions.ScalarFunction;\n\n/**\n * @Author jie.lan\n * @Date 2021/3/25 15:01\n *\n * 抽取debezium_json source中的数据\n */\npublic class GetSourceMeta extends ScalarFunction {\n    public String eval(String debeziumJson,String key ) {\n        return JSON.parseObject(debeziumJson).getJSONObject(\"source\").getString(key);\n    }\n}\n"
-  }
-]
